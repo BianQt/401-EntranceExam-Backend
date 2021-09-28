@@ -8,13 +8,16 @@ const getFruits = (req, res) => {
     .get("https://fruit-api-301.herokuapp.com/getFruit")
     .then((foundFruits) => {
       res.json(foundFruits.data);
+    }).catch((err) => {
+        console.log("Something wen1 wrong!")
+        console.log(err);;
     });
 };
 
 const getUserFruits = (req, res) => {
   const email = req.params.email;
 
-  Fruit.find({ email: eamil }, (err, foundFruits) => {
+  Fruit.find({ email: email }, (err, foundFruits) => {
     res.json(foundFruits);
   });
 };
